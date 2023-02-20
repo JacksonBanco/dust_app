@@ -32,11 +32,16 @@ class _HomeScreenState extends State<HomeScreen> {
     fetchData();
   }
 
+  @override
+  dispose(){
+    super.dispose();
+  }
+
+
   Future<void> fetchData() async {
     try{
       //다중비동기 요청 병렬식
       //6개를 요청하기때문에 느린다 하지만 다중 비동기처리를 하면 동시에 다중으로 하기때문에빠르다
-      List<Future> futures = [];
       final now = DateTime.now();
       final fetchTime = DateTime(
         now.year,
@@ -48,18 +53,19 @@ class _HomeScreenState extends State<HomeScreen> {
       final box = Hive.box<StateModel>(ItemCode.PM10.name);
 
       if(box.values.isNotEmpty &&
-          (box.values.last as StateModel)
-              .dataTime
-              .isAtSameMomentAs(fetchTime)){
+          (box.values.last).dataTime.isAtSameMomentAs(fetchTime)){
         return;
       }
+
+      List<Future> futures = [];
 
       for (ItemCode itemCode in ItemCode.values) {
         futures.add(
           //이게 요청이 될때 동시에 나가지만
             StateRepository.fetchData(
               itemCode: itemCode,
-            ));
+            ),
+        );
       }
 
       //List<Future>에 퓨처값을 넣게되면 다끝날때까지 한번에 기다린다
@@ -75,8 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
         final box = Hive.box<StateModel>(key.name);
 
-        //List<StateModel> 값
-        box.values.toList();
+/*        //List<StateModel> 값
+        box.values.toList();*/
 
         for (StateModel state in value) {
           box.put(state.dataTime.toString(), state);
@@ -86,24 +92,9 @@ class _HomeScreenState extends State<HomeScreen> {
         if(allKeys.length >24){
           final deleteKeys = allKeys.sublist(0, allKeys.length - 24);
 
-          box.delete(deleteKeys);
+          box.deleteAll(deleteKeys);
         }
       }
-
-      //직접 hive box로부터 데이터를 가져와서 사용함
-      /*return ItemCode.values.fold<Map<ItemCode, List<StateModel>>>(
-      {},
-      (previousValue, itemCode) {
-        final box = Hive.box<StateModel>(itemCode.name);
-
-        previousValue.addAll({
-          itemCode: box.values.toList(),
-        });
-
-        return previousValue;
-      },
-    );*/
-
     } on DioError catch (e){
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

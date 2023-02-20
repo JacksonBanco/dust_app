@@ -28,7 +28,7 @@ class HourlyCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           CardTitle(
-            title: '시간별 ${DataUtils.getItemCodeKRString(itemCode:  itemCode)}',
+            title: '時間別 ${DataUtils.getItemCodeKRString(itemCode:  itemCode)}',
             backgroundColor: darkColor,
           ),
           ValueListenableBuilder<Box>(

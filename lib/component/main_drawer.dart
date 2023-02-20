@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../const/regions.dart';
+import 'package:dust_app/const/regions.dart';
 
 typedef OnRegionTap = void Function(String region);
 
@@ -25,7 +25,7 @@ class MainDrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             child: Text(
-              '지역 선택',
+              '地域選択',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20.0,

@@ -32,17 +32,11 @@ class StatusModel{
   //초미세먼지 최소치
   final double minUltraFineDust;
 
-  //오존 최소치
-  final double minO3;
-
   //이산화질소최소치
   final double minNO2;
 
   //일산화탄소최소치
   final double minCO;
-
-  //이황산가스최소치
-  final double minSO2;
 
   StatusModel({
     //단계
@@ -65,14 +59,10 @@ class StatusModel{
     required this.minFineDust,
     //초미세먼지 최소치
     required this.minUltraFineDust,
-    //오존 최소치
-    required this.minO3,
     //이산화질소최소치
     required this.minNO2,
     //일산화탄소최소치
     required this.minCO,
-    //이황산가스최소치
-    required this.minSO2,
   });
 
 }

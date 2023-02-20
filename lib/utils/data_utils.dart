@@ -20,7 +20,7 @@ class DataUtils {
         return "PM10";
 
       case ItemCode.PM25:
-        return 'PM25';
+        return 'PM2.5';
 
       default:
         return 'ppm';
@@ -32,22 +32,16 @@ class DataUtils {
   }) {
     switch(itemCode){
       case ItemCode.PM10:
-        return '미세먼지';
+        return 'PM10(微細 ほこり)';
 
       case ItemCode.PM25:
-        return '초미세먼지';
+        return '㏘2.5';
 
       case ItemCode.NO2:
-        return '이산화질소';
-
-      case ItemCode.O3:
-        return '오존';
+        return '二酸化硫黄(SO2)';
 
       case ItemCode.CO:
-        return '일산화탄소';
-
-      case ItemCode.SO2:
-        return  '이황산탄소';
+        return '一酸化窒素(NO)';
     }
   }
 
@@ -64,14 +58,8 @@ class DataUtils {
               }else if(itemCode == ItemCode.CO){
                 return status.minCO < value;
               }
-              else if(itemCode == ItemCode.O3){
-                return status.minO3 < value;
-              }
               else if(itemCode == ItemCode.NO2){
                 return status.minNO2 < value;
-              }
-              else if(itemCode == ItemCode.SO2){
-                return status.minSO2 < value;
               }else{
                 throw Exception('알수없는 정보입니다');
               }

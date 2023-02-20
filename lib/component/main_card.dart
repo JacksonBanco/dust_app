@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dust_app/const/colors.dart';
 
 class MainCard extends StatelessWidget {
   final Color backgroundColor;

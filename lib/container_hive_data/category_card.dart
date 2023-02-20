@@ -30,7 +30,7 @@ class CategoryCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               CardTitle(
-                title: '종류별 통계',
+                title: '種類別統計',
                 backgroundColor: darkColor,
               ),
               Expanded(

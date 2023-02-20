@@ -1,7 +1,6 @@
 import 'package:dust_app/utils/data_utils.dart';
 import 'package:flutter/material.dart';
 
-import '../const/colors.dart';
 import '../model/state_model.dart';
 import '../model/status_model.dart';
 

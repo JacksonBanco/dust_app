@@ -13,15 +13,9 @@ enum ItemCode{
   //이산화질소
   @HiveField(2)
   NO2,
-  //오존
-  @HiveField(3)
-  O3,
   //일산화탄소
-  @HiveField(4)
+  @HiveField(3)
   CO,
-  //이황산가스
-  @HiveField(5)
-  SO2,
 }
 
 //절대로 중복되면 안된다

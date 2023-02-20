@@ -23,7 +23,7 @@ class CardTitle extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Text(
-          '종류별통계',
+          title,
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w700,
